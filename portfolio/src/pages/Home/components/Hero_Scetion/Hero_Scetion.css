@@ -1,0 +1,1847 @@
+
+/* =========================================================
+   PORTFOLIO HERO SECTION
+   COMPLETE RESPONSIVE CSS
+   Desktop + Tablet + Mobile + Small Mobile
+   Real Technology Icons + Hologram Animations
+   ========================================================= */
+
+/* ==================== 1. BASE & THEME ==================== */
+
+.portfolio-hero-section,
+.portfolio-hero,
+.portfolio-hero *,
+.portfolio-hero *::before,
+.portfolio-hero *::after {
+  box-sizing: border-box;
+}
+
+.portfolio-hero-section {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #050a16;
+}
+
+html[data-theme="light"] .portfolio-hero-section {
+  background: #f3f6ff;
+}
+
+.portfolio-hero {
+  --hero-bg: #050a16;
+  --hero-text: #f5f7ff;
+  --hero-muted: #a6b4d0;
+  --hero-border: rgba(106, 158, 255, 0.22);
+  --hero-cyan: #23d8ff;
+  --hero-blue: #3979ff;
+  --hero-purple: #a24dff;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: min(820px, calc(100svh - 90px));
+  overflow: hidden;
+  background: var(--hero-bg);
+  color: var(--hero-text);
+}
+
+html[data-theme="light"] .portfolio-hero {
+  --hero-bg: #f3f6ff;
+  --hero-text: #111a30;
+  --hero-muted: #5c6a85;
+  --hero-border: rgba(55, 95, 180, 0.2);
+}
+
+/* ==================== 2. GRID BACKGROUND ==================== */
+
+.portfolio-hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(91, 140, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 140, 255, 0.055) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: linear-gradient(to bottom, #000, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 95%);
+}
+
+html[data-theme="light"] .portfolio-hero-section::before {
+  background-image:
+    linear-gradient(rgba(53, 103, 203, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 103, 203, 0.07) 1px, transparent 1px);
+}
+
+.hero-scene {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(91, 140, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 140, 255, 0.055) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: linear-gradient(to bottom, #000, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent 95%);
+}
+
+html[data-theme="light"] .hero-grid {
+  background-image:
+    linear-gradient(rgba(53, 103, 203, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 103, 203, 0.07) 1px, transparent 1px);
+}
+
+.hero-ambient {
+  position: absolute;
+  width: 430px;
+  max-width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(105px);
+  opacity: 0.2;
+  animation: hero-ambient-drift 12s ease-in-out infinite alternate;
+}
+
+.hero-ambient-blue {
+  top: 5%;
+  right: 5%;
+  background: #075dff;
+}
+
+.hero-ambient-purple {
+  right: -12%;
+  bottom: -30%;
+  background: #7c22ff;
+  animation-delay: -6s;
+}
+
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.65;
+  background-image:
+    radial-gradient(circle, #65baff 1px, transparent 1.5px),
+    radial-gradient(circle, #9d7bff 1px, transparent 1.5px);
+  background-size: 113px 137px, 179px 193px;
+  background-position: 15px 22px, 70px 80px;
+  animation: hero-star-drift 25s linear infinite;
+}
+
+html[data-theme="light"] .hero-stars {
+  opacity: 0.22;
+}
+
+.hero-horizon {
+  position: absolute;
+  right: -10%;
+  bottom: -33%;
+  left: -10%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(28, 94, 255, 0.2),
+    rgba(101, 40, 255, 0.09) 40%,
+    transparent 70%
+  );
+  filter: blur(35px);
+}
+
+/* ==================== 3. MAIN CONTAINER ==================== */
+
+.portfolio-hero .hero-layout.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.02fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 48px);
+  width: 100%;
+  max-width: var(--container-width, 1280px);
+  min-width: 0;
+  min-height: inherit;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 3vw, 40px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ==================== 4. AVAILABILITY ==================== */
+
+.hero-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--hero-border);
+  border-radius: 999px;
+  background: rgba(20, 35, 66, 0.48);
+  color: var(--hero-muted);
+  font-size: 12px;
+  font-weight: 550;
+}
+
+html[data-theme="light"] .hero-availability {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.hero-availability-dot {
+  position: relative;
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35e7a0;
+  box-shadow: 0 0 12px rgba(53, 231, 160, 0.55);
+}
+
+.hero-availability-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(53, 231, 160, 0.45);
+  border-radius: 50%;
+  animation: hero-status-pulse 2s ease-out infinite;
+}
+
+.hero-eyebrow {
+  margin: 31px 0 12px;
+  color: var(--hero-cyan);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1.7;
+}
+
+/* ==================== 5. HEADING ==================== */
+
+.hero-heading {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  font-size: clamp(36px, 4.15vw, 62px);
+  font-weight: 850;
+  letter-spacing: -2px;
+  line-height: 1.12;
+  white-space: nowrap;
+}
+
+.hero-name-first {
+  display: inline;
+  margin-right: 0.15em;
+  color: var(--hero-text);
+}
+
+.hero-name-last {
+  display: inline;
+  padding-right: 0.1em;
+  background: linear-gradient(105deg, #21d9ff, #4d81ff 45%, #b451ff 95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-heading-dot {
+  color: #a04cff;
+  -webkit-text-fill-color: #a04cff;
+}
+
+/* ==================== 6. TYPING ROLE ==================== */
+
+.hero-role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  margin-top: 20px;
+  font-size: clamp(20px, 2.35vw, 32px);
+  font-weight: 750;
+  letter-spacing: -1px;
+  line-height: 1.4;
+}
+
+.hero-role-prefix {
+  color: var(--hero-text);
+}
+
+.hero-role-gradient {
+  overflow-wrap: anywhere;
+  background: linear-gradient(100deg, #35d9ff, #a779ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-role-cursor {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 2px;
+  height: 1em;
+  background: var(--hero-cyan);
+  animation: hero-caret 850ms step-end infinite;
+}
+
+/* ==================== 7. DESCRIPTION ==================== */
+
+.hero-description {
+  width: 100%;
+  max-width: 520px;
+  margin: 20px 0 0;
+  color: var(--hero-muted);
+  font-size: 14px;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+
+/* ==================== 8. BUTTONS ==================== */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 49px;
+  max-width: 100%;
+  padding: 0 18px;
+  border: 1px solid var(--hero-border);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.hero-button-primary {
+  border-color: transparent;
+  background: linear-gradient(105deg, #09c7f7, #4162ff 55%, #9c3eff);
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(49, 99, 255, 0.2);
+}
+
+.hero-button-code {
+  font-family: monospace;
+  font-size: 15px;
+}
+
+.hero-button-arrow {
+  font-size: 17px;
+  transition: transform 220ms ease;
+}
+
+.hero-button-secondary {
+  background: rgba(16, 28, 51, 0.42);
+  color: var(--hero-text);
+}
+
+html[data-theme="light"] .hero-button-secondary {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.hero-button-secondary svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==================== 9. TECHNOLOGY STACK ==================== */
+
+.hero-tech-stack {
+  width: 100%;
+  min-width: 0;
+  margin-top: 29px;
+}
+
+.hero-stack-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--hero-muted);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 2px;
+}
+
+.hero-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.hero-tech-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  min-height: 35px;
+  padding: 5px 9px;
+  border: 1px solid var(--hero-border);
+  border-radius: 10px;
+  background: rgba(15, 28, 53, 0.58);
+}
+
+html[data-theme="light"] .hero-tech-item {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+/* Real react-icons SVG logos */
+.hero-tech-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+  min-width: 21px;
+  min-height: 21px;
+  color: #56cfff;
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.hero-tech-symbol svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tech-react .hero-tech-symbol,
+.tech-react-native .hero-tech-symbol {
+  color: #61dafb;
+}
+
+.tech-next .hero-tech-symbol {
+  color: var(--hero-text);
+}
+
+.tech-typescript .hero-tech-symbol {
+  color: #3178c6;
+}
+
+.tech-javascript .hero-tech-symbol {
+  color: #f7df1e;
+}
+
+.tech-node .hero-tech-symbol {
+  color: #5fa04e;
+}
+
+.tech-mysql .hero-tech-symbol {
+  color: #4479a1;
+}
+
+.tech-mongo .hero-tech-symbol {
+  color: #47a248;
+}
+
+.hero-tech-name {
+  color: var(--hero-muted);
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ==================== 10. BOTTOM NOTE ==================== */
+
+.hero-bottom-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 27px;
+  color: var(--hero-muted);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+.hero-note-line {
+  flex-shrink: 0;
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--hero-cyan), var(--hero-purple));
+}
+
+/* ==================== 11. HOLOGRAM VISUAL ==================== */
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 530px;
+  perspective: 1100px;
+}
+
+.holo-stage {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 650px;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+}
+
+.holo-aura {
+  position: absolute;
+  top: 17%;
+  left: 15%;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(25, 157, 255, 0.28),
+    rgba(89, 65, 255, 0.14) 38%,
+    transparent 70%
+  );
+  filter: blur(25px);
+  animation: holo-aura-pulse 5s ease-in-out infinite alternate;
+}
+
+/* ==================== 12. HOLOGRAM ORBITS ==================== */
+
+.holo-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(65, 172, 255, 0.5);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.holo-orbit-outer {
+  width: 88%;
+  height: 37%;
+  transform: translate(-50%, -50%) rotate(-32deg);
+  animation: holo-orbit-rotate 17s linear infinite;
+}
+
+.holo-orbit-middle {
+  width: 78%;
+  height: 49%;
+  border-color: rgba(164, 82, 255, 0.7);
+  transform: translate(-50%, -50%) rotate(47deg);
+  animation: holo-orbit-counter 21s linear infinite;
+}
+
+.holo-orbit-inner {
+  width: 64%;
+  height: 64%;
+  border-color: rgba(49, 206, 255, 0.24);
+  border-style: dashed;
+  transform: translate(-50%, -50%);
+  animation: holo-orbit-spin 32s linear infinite;
+}
+
+.holo-orbit-point {
+  position: absolute;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hero-cyan);
+  box-shadow: 0 0 12px 3px rgba(35, 216, 255, 0.65);
+}
+
+.orbit-point-one {
+  top: 8%;
+  left: 17%;
+}
+
+.orbit-point-two {
+  right: 12%;
+  bottom: 8%;
+  background: #bd78ff;
+  box-shadow: 0 0 12px 3px rgba(162, 77, 255, 0.65);
+}
+
+.orbit-point-three {
+  top: 50%;
+  left: -4px;
+}
+
+/* ==================== 13. HOLOGRAM BEAMS ==================== */
+
+.holo-beam {
+  position: absolute;
+  top: 8%;
+  bottom: 11%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(35, 216, 255, 0.08),
+    rgba(35, 216, 255, 0.65),
+    transparent
+  );
+  transform-origin: center;
+  opacity: 0.65;
+  animation: holo-beam-pulse 3s ease-in-out infinite alternate;
+}
+
+.holo-beam-one {
+  left: 50%;
+}
+
+.holo-beam-two {
+  left: 34%;
+  animation-delay: -1.5s;
+}
+
+/* ==================== 14. HOLOGRAM CORE ==================== */
+
+.holo-core-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 43%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -54%);
+  animation: holo-core-float 5s ease-in-out infinite;
+}
+
+.holo-core-halo {
+  position: absolute;
+  inset: -15%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(32, 161, 255, 0.35),
+    rgba(98, 68, 255, 0.18) 45%,
+    transparent 70%
+  );
+  filter: blur(16px);
+}
+
+.holo-core {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(105, 220, 255, 0.8);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(90, 207, 255, 0.23), transparent 37%),
+    radial-gradient(circle at 70% 75%, rgba(150, 69, 255, 0.3), transparent 45%),
+    linear-gradient(145deg, rgba(12, 65, 132, 0.82), rgba(15, 20, 71, 0.92));
+  box-shadow:
+    inset 0 0 32px rgba(35, 216, 255, 0.25),
+    0 0 24px rgba(35, 169, 255, 0.48),
+    0 0 75px rgba(74, 76, 255, 0.24);
+  transform-style: preserve-3d;
+}
+
+.holo-core-top {
+  position: absolute;
+  inset: 7%;
+  border: 1px solid rgba(151, 223, 255, 0.5);
+  border-radius: 50%;
+  transform: rotateX(63deg);
+  animation: holo-core-spin 12s linear infinite;
+}
+
+.holo-core-grid {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image:
+    linear-gradient(rgba(71, 196, 255, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(71, 196, 255, 0.13) 1px, transparent 1px);
+  background-size: 19px 19px;
+  mask-image: radial-gradient(circle, #000 10%, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle, #000 10%, transparent 76%);
+}
+
+.holo-core-symbol {
+  position: relative;
+  z-index: 2;
+  color: #8ceaff;
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 900;
+  text-shadow: 0 0 12px rgba(35, 216, 255, 0.9),
+    0 0 35px rgba(35, 216, 255, 0.5);
+  animation: holo-symbol-flicker 6s ease-in-out infinite;
+}
+
+.holo-core-caption {
+  position: absolute;
+  right: 0;
+  bottom: 19%;
+  left: 0;
+  color: #9edfff;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.holo-floor {
+  position: absolute;
+  right: 10%;
+  bottom: -14%;
+  left: 10%;
+  height: 13%;
+  border-radius: 50%;
+  background: rgba(36, 192, 255, 0.5);
+  filter: blur(13px);
+}
+
+/* ==================== 15. FLOATING TECH CARDS ==================== */
+
+.holo-tech-card {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  max-width: 48%;
+  padding: 10px 12px;
+  border: 1px solid rgba(109, 171, 255, 0.36);
+  border-radius: 13px;
+  background: linear-gradient(
+    135deg,
+    rgba(16, 38, 77, 0.85),
+    rgba(11, 20, 47, 0.7)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 35px rgba(0, 0, 0, 0.16),
+    0 0 18px rgba(45, 130, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: holo-card-float 5s ease-in-out infinite;
+}
+
+html[data-theme="light"] .holo-tech-card,
+html[data-theme="light"] .holo-code-panel {
+  background: rgba(245, 248, 255, 0.92);
+  box-shadow: 0 12px 30px rgba(39, 75, 148, 0.13);
+}
+
+.holo-tech-card strong,
+.holo-tech-card small {
+  display: block;
+}
+
+.holo-tech-card strong {
+  color: var(--hero-text);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.holo-tech-card small {
+  margin-top: 4px;
+  color: var(--hero-muted);
+  font-size: 8px;
+}
+
+.holo-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 31px;
+  height: 31px;
+  border: 1px solid rgba(75, 177, 255, 0.3);
+  border-radius: 9px;
+  background: rgba(44, 133, 255, 0.13);
+  color: #5bceff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.holo-card-icon svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+}
+
+.react-icon {
+  color: #61dafb;
+}
+
+.next-icon {
+  color: var(--hero-text);
+}
+
+.ts-icon {
+  color: #3178c6;
+}
+
+.node-icon {
+  color: #5fa04e;
+}
+
+.holo-card-react {
+  top: 26%;
+  left: 1%;
+  animation-delay: -1s;
+}
+
+.holo-card-next {
+  bottom: 24%;
+  left: 8%;
+  animation-delay: -2.4s;
+}
+
+.holo-card-ts {
+  top: 12%;
+  right: 12%;
+  animation-delay: -3.2s;
+}
+
+.holo-card-node {
+  right: 0;
+  bottom: 30%;
+  animation-delay: -1.7s;
+}
+
+/* ==================== 16. FLOATING CODE PANELS ==================== */
+
+.holo-code-panel {
+  position: absolute;
+  z-index: 4;
+  width: 43%;
+  max-width: 48%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(86, 158, 255, 0.4);
+  border-radius: 12px;
+  background: rgba(8, 20, 43, 0.9);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+    0 0 24px rgba(42, 116, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.holo-code-front {
+  top: 3%;
+  left: 5%;
+  transform: rotate(-7deg);
+  animation: holo-code-front-float 7s ease-in-out infinite;
+}
+
+.holo-code-back {
+  top: 37%;
+  right: 0;
+  width: 36%;
+  transform: rotate(5deg);
+  animation: holo-code-back-float 8s ease-in-out infinite;
+}
+
+.holo-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 29px;
+  padding: 0 9px;
+  border-bottom: 1px solid var(--hero-border);
+  color: var(--hero-muted);
+  font-size: 8px;
+}
+
+.holo-panel-dots {
+  display: flex;
+  flex-shrink: 0;
+  gap: 3px;
+}
+
+.holo-panel-dots i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ff6e8a;
+}
+
+.holo-panel-dots i:nth-child(2) {
+  background: #ffcb67;
+}
+
+.holo-panel-dots i:nth-child(3) {
+  background: #4fe5ac;
+}
+
+.holo-code-lines {
+  padding: 9px 7px 10px;
+  overflow: hidden;
+}
+
+.holo-code-lines p {
+  overflow: hidden;
+  margin: 0;
+  color: var(--hero-text);
+  font-family: var(--font-mono, monospace);
+  font-size: clamp(6px, 0.7vw, 9px);
+  line-height: 2.05;
+  white-space: nowrap;
+}
+
+.holo-code-lines p > span {
+  margin-right: 5px;
+  color: #657fa8;
+}
+
+.holo-code-lines b {
+  color: #c38aff;
+  font-weight: 650;
+}
+
+.holo-code-lines em {
+  color: #65e7bc;
+  font-style: normal;
+}
+
+.holo-code-lines strong {
+  color: #65caff;
+  font-weight: 650;
+}
+
+/* ==================== 17. HOLOGRAM PLATFORM ==================== */
+
+.holo-platform {
+  position: absolute;
+  z-index: 3;
+  right: 9%;
+  bottom: 4%;
+  left: 9%;
+  height: 22%;
+  perspective: 600px;
+}
+
+.holo-platform-ring {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 94%;
+  height: 54%;
+  border: 2px solid rgba(45, 201, 255, 0.75);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(35, 216, 255, 0.35),
+    inset 0 0 12px rgba(35, 216, 255, 0.18);
+  transform: translateX(-50%) rotateX(64deg);
+}
+
+.platform-ring-one {
+  animation: holo-platform-pulse 3s ease-in-out infinite alternate;
+}
+
+.platform-ring-two {
+  top: 10%;
+  width: 76%;
+  border-color: rgba(163, 78, 255, 0.75);
+  animation: holo-platform-pulse 3s ease-in-out infinite alternate-reverse;
+}
+
+.platform-ring-three {
+  top: 20%;
+  width: 58%;
+  border-color: rgba(35, 216, 255, 0.65);
+}
+
+.holo-platform-base {
+  position: absolute;
+  top: 28%;
+  right: 15%;
+  left: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 46%;
+  border: 1px solid rgba(61, 172, 255, 0.65);
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 51, 102, 0.94),
+    rgba(5, 12, 30, 0.98)
+  );
+  box-shadow: inset 0 0 18px rgba(35, 216, 255, 0.1),
+    0 0 30px rgba(35, 136, 255, 0.17);
+  transform: rotateX(5deg);
+}
+
+.platform-label {
+  color: #60dfff;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px rgba(35, 216, 255, 0.6);
+}
+
+.platform-light {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #4fe5ff;
+  box-shadow: 0 0 10px 3px rgba(35, 216, 255, 0.55);
+}
+
+.holo-side-label {
+  position: absolute;
+  top: 21%;
+  right: 1%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #a98bff;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+  writing-mode: vertical-rl;
+}
+
+.holo-side-label-line {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(transparent, #8c64ff, transparent);
+}
+
+/* ==================== 18. SCROLL INDICATOR ==================== */
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: var(--hero-muted);
+  text-decoration: none;
+  transform: translateX(-50%);
+}
+
+.hero-scroll-mouse {
+  display: flex;
+  justify-content: center;
+  width: 19px;
+  height: 29px;
+  padding-top: 5px;
+  border: 1.5px solid var(--hero-cyan);
+  border-radius: 999px;
+}
+
+.hero-scroll-mouse span {
+  width: 2px;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--hero-cyan);
+  animation: hero-scroll-wheel 1.5s ease-in-out infinite;
+}
+
+.hero-scroll-text {
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+}
+
+.hero-scroll-chevron {
+  color: var(--hero-cyan);
+  font-size: 15px;
+  animation: hero-scroll-down 1.4s ease-in-out infinite;
+}
+
+/* ==================== 19. ENTRY ANIMATIONS ==================== */
+
+.hero-enter {
+  animation: hero-enter-up 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-delay-1 { animation-delay: 80ms; }
+.hero-delay-2 { animation-delay: 150ms; }
+.hero-delay-3 { animation-delay: 220ms; }
+.hero-delay-4 { animation-delay: 300ms; }
+.hero-delay-5 { animation-delay: 380ms; }
+.hero-delay-6 { animation-delay: 460ms; }
+.hero-delay-7 { animation-delay: 540ms; }
+
+/* ==================== 20. KEYFRAMES ==================== */
+
+@keyframes hero-enter-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-ambient-drift {
+  from {
+    transform: translate3d(-15px, 0, 0) scale(0.95);
+  }
+  to {
+    transform: translate3d(20px, 15px, 0) scale(1.08);
+  }
+}
+
+@keyframes hero-star-drift {
+  from {
+    background-position: 15px 22px, 70px 80px;
+  }
+  to {
+    background-position: 128px 159px, 249px 273px;
+  }
+}
+
+@keyframes hero-status-pulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+@keyframes hero-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes holo-aura-pulse {
+  from {
+    opacity: 0.55;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.07);
+  }
+}
+
+@keyframes holo-orbit-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(-32deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(328deg);
+  }
+}
+
+@keyframes holo-orbit-counter {
+  from {
+    transform: translate(-50%, -50%) rotate(47deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-313deg);
+  }
+}
+
+@keyframes holo-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes holo-core-float {
+  0%, 100% {
+    transform: translate(-50%, -54%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -54%) translateY(-11px);
+  }
+}
+
+@keyframes holo-core-spin {
+  from {
+    transform: rotateX(63deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(63deg) rotateZ(360deg);
+  }
+}
+
+@keyframes holo-symbol-flicker {
+  0%, 90%, 100% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0.72;
+  }
+  97% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes holo-beam-pulse {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0.85;
+  }
+}
+
+@keyframes holo-card-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -9px;
+  }
+}
+
+@keyframes holo-code-front-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes holo-code-back-float {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 9px;
+  }
+}
+
+@keyframes holo-platform-pulse {
+  from {
+    opacity: 0.55;
+    filter: brightness(0.9);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1.3);
+  }
+}
+
+@keyframes hero-scroll-wheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(9px);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-scroll-down {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}
+
+/* ==================== 21. TABLET: 768px–1000px ==================== */
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  .portfolio-hero {
+    min-height: auto;
+  }
+
+  .portfolio-hero .hero-layout.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+    max-width: 760px;
+    min-height: auto;
+    margin-inline: auto;
+    padding: 30px 24px 55px;
+  }
+
+  .hero-visual {
+    order: -1;
+    width: 100%;
+    max-width: 590px;
+    min-height: 0;
+    margin: 0 auto 8px;
+  }
+
+  .holo-stage {
+    width: 100%;
+    max-width: 590px;
+    margin-inline: auto;
+  }
+
+  .hero-content {
+    order: 1;
+    width: 100%;
+    max-width: 680px;
+    margin-inline: auto;
+  }
+
+  .hero-heading {
+    font-size: clamp(36px, 6vw, 54px);
+  }
+
+  .hero-description {
+    max-width: 100%;
+  }
+
+  .hero-scroll-hint {
+    bottom: 10px;
+  }
+}
+
+/* ==================== 22. MOBILE: 561px–767px ==================== */
+
+@media (min-width: 561px) and (max-width: 767px) {
+  .portfolio-hero {
+    min-height: auto;
+  }
+
+  .portfolio-hero .hero-layout.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    max-width: 620px;
+    min-height: auto;
+    margin-inline: auto;
+    padding: 24px 22px 52px;
+  }
+
+  .hero-visual {
+    order: -1;
+    width: 100%;
+    max-width: 480px;
+    min-height: 0;
+    margin: 0 auto 12px;
+  }
+
+  .holo-stage {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .hero-content {
+    order: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-heading {
+    font-size: clamp(32px, 6vw, 44px);
+    letter-spacing: -1.4px;
+  }
+
+  .hero-role {
+    font-size: clamp(20px, 4.5vw, 28px);
+  }
+
+  .hero-description {
+    max-width: 100%;
+  }
+
+  .hero-scroll-hint {
+    bottom: 8px;
+  }
+}
+
+/* ==================== 23. MOBILE: 360px–560px ==================== */
+
+@media (max-width: 560px) {
+  .portfolio-hero {
+    min-height: auto;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .portfolio-hero-section {
+    overflow: clip;
+  }
+
+  .portfolio-hero .hero-layout.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: auto;
+    margin: 0;
+    padding: 16px 16px 48px;
+  }
+
+  /* Hologram first on mobile */
+  .hero-visual {
+    order: -1;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    margin: 0 auto 18px;
+    padding: 0;
+    overflow: visible;
+    perspective: 900px;
+  }
+
+  .holo-stage {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .hero-content {
+    order: 1;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .hero-availability {
+    gap: 8px;
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+
+  .hero-eyebrow {
+    margin: 22px 0 10px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    line-height: 1.7;
+  }
+
+  .hero-heading {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(24px, 7.2vw, 38px);
+    font-weight: 850;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero-name-first,
+  .hero-name-last {
+    display: inline;
+  }
+
+  .hero-role {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+    margin-top: 14px;
+    font-size: clamp(19px, 5.4vw, 27px);
+    letter-spacing: -0.6px;
+    line-height: 1.4;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+  }
+
+  /* Full-width mobile buttons */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    margin-top: 22px;
+  }
+
+  .hero-button {
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    min-height: 46px;
+    padding-inline: 14px;
+  }
+
+  /* Technology chips */
+  .hero-tech-stack {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 24px;
+  }
+
+  .hero-stack-label {
+    margin-bottom: 10px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-tech-item {
+    min-width: 0;
+    min-height: 31px;
+    gap: 5px;
+    padding: 4px 7px;
+  }
+
+  .hero-tech-symbol {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    font-size: 13px;
+  }
+
+  .hero-tech-symbol svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-tech-name {
+    font-size: 9px;
+  }
+
+  .hero-bottom-note {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 9px;
+  }
+
+  /* Floating hologram cards */
+  .holo-tech-card {
+    z-index: 5;
+    gap: 5px;
+    min-width: 0;
+    max-width: 43%;
+    padding: 6px;
+    border-radius: 9px;
+  }
+
+  .holo-card-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 14px;
+    border-radius: 7px;
+  }
+
+  .holo-card-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .holo-tech-card strong {
+    font-size: 8px;
+    line-height: 1.3;
+  }
+
+  .holo-tech-card small {
+    margin-top: 3px;
+    font-size: 7px;
+    line-height: 1.4;
+  }
+
+  .holo-card-react {
+    top: 27%;
+    left: 0;
+  }
+
+  .holo-card-next {
+    bottom: 17%;
+    left: 2%;
+  }
+
+  .holo-card-ts {
+    top: 12%;
+    right: 0;
+  }
+
+  .holo-card-node {
+    right: 0;
+    bottom: 25%;
+  }
+
+  /* Code panels */
+  .holo-code-panel {
+    max-width: 45%;
+    border-radius: 9px;
+  }
+
+  .holo-code-front {
+    top: 3%;
+    left: 3%;
+    width: 43%;
+  }
+
+  .holo-code-back {
+    top: 41%;
+    right: 0;
+    width: 37%;
+  }
+
+  .holo-panel-header {
+    min-height: 22px;
+    gap: 4px;
+    padding-inline: 5px;
+    font-size: 6px;
+  }
+
+  .holo-panel-dots {
+    flex-shrink: 0;
+    gap: 2px;
+  }
+
+  .holo-panel-dots i {
+    width: 4px;
+    height: 4px;
+  }
+
+  .holo-code-lines {
+    padding: 5px 4px 6px;
+  }
+
+  .holo-code-lines p {
+    font-size: clamp(4px, 1.35vw, 6px);
+    line-height: 1.9;
+  }
+
+  .holo-code-lines p > span {
+    margin-right: 2px;
+  }
+
+  /* Central hologram */
+  .holo-core-wrap {
+    width: 43%;
+  }
+
+  .holo-core-symbol {
+    font-size: clamp(27px, 8vw, 36px);
+  }
+
+  .holo-core-caption {
+    bottom: 18%;
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+
+  .holo-core-grid {
+    background-size: 14px 14px;
+  }
+
+  /* Platform */
+  .holo-platform {
+    right: 5%;
+    bottom: 3%;
+    left: 5%;
+    height: 20%;
+  }
+
+  .holo-platform-base {
+    min-height: 40%;
+  }
+
+  .platform-label {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+
+  .holo-side-label {
+    display: none;
+  }
+
+  /* Scroll indicator */
+  .hero-scroll-hint {
+    bottom: 8px;
+    gap: 4px;
+  }
+
+  .hero-scroll-text {
+    font-size: 7px;
+  }
+}
+
+/* ==================== 24. EXTRA SMALL: 320px–359px ==================== */
+
+@media (max-width: 359px) {
+  .portfolio-hero .hero-layout.container {
+    padding: 12px 12px 44px;
+  }
+
+  .hero-visual {
+    margin-bottom: 14px;
+  }
+
+  .holo-stage {
+    width: 100%;
+    max-width: 335px;
+  }
+
+  .hero-heading {
+    font-size: clamp(23px, 7.2vw, 26px);
+    letter-spacing: -0.8px;
+  }
+
+  .hero-role {
+    font-size: 19px;
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-tech-list {
+    gap: 5px;
+  }
+
+  .hero-tech-item {
+    gap: 4px;
+    padding-inline: 5px;
+  }
+
+  .hero-tech-symbol {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  .hero-tech-name {
+    font-size: 8px;
+  }
+
+  .holo-tech-card {
+    gap: 4px;
+    padding: 5px;
+  }
+
+  .holo-tech-card strong {
+    font-size: 7px;
+  }
+
+  .holo-tech-card small {
+    font-size: 6px;
+  }
+
+  .holo-card-icon {
+    width: 21px;
+    height: 21px;
+    min-width: 21px;
+    font-size: 12px;
+  }
+
+  .holo-card-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ==================== 25. LARGE DESKTOP ==================== */
+
+@media (min-width: 1400px) {
+  .portfolio-hero .hero-layout.container {
+    max-width: var(--container-width, 1280px);
+  }
+
+  .hero-visual {
+    min-height: 560px;
+  }
+
+  .holo-stage {
+    max-width: 650px;
+  }
+}
+
+/* ==================== 26. ACCESSIBILITY ==================== */
+
+.hero-button:focus-visible,
+.hero-scroll-hint:focus-visible {
+  outline: 2px solid var(--hero-cyan);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-hero *,
+  .portfolio-hero *::before,
+  .portfolio-hero *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-enter {
+    opacity: 1;
+    transform: none;
+  }
+}

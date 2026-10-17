@@ -1,0 +1,25 @@
+.stack-item {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+/* Hero ke baad wale sections: upar rounded corners + shadow, taaki "card" jaisa dikhe */
+.stack-item:not(:first-child) {
+  border-radius: 28px 28px 0 0;
+  overflow: clip;
+  box-shadow: 0 -24px 60px rgba(8, 13, 27, 0.22);
+}
+
+@media (max-width: 600px) {
+  .stack-item:not(:first-child) {
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-item {
+    position: relative;
+    top: auto !important;
+  }
+}

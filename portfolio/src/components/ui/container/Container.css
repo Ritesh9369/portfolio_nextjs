@@ -1,0 +1,43 @@
+
+/* =========================================
+   COMMON CONTAINER
+   Reusable across the entire application
+   ========================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width, 1280px);
+  margin-inline: auto;
+  padding-inline: 0;
+  min-width: 0;
+  box-sizing: border-box;
+
+  /* DEBUG: Red container boundary */
+  outline: 2px solid red;
+  outline-offset: -2px;
+}
+
+.container,
+.container * {
+  box-sizing: border-box;
+}
+
+/* Responsive container */
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding-inline: 0;
+  }
+}

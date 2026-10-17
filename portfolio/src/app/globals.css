@@ -1,0 +1,320 @@
+
+@import "tailwindcss";
+
+/* =====================================================
+   1. GLOBAL DESIGN TOKENS
+   Common colors, fonts, widths and spacing
+   ===================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Theme colors */
+  --background: #f8fafc;
+  --foreground: #111827;
+  --surface: #ffffff;
+  --surface-secondary: #f1f5f9;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #496b96;
+  --accent-foreground: #ffffff;
+
+  /* Font family: Geist is loaded in layout.tsx */
+  --font-body: var(--font-geist-sans), Arial, sans-serif;
+  --font-code: var(--font-geist-mono), monospace;
+
+  /* Shared container settings */
+  --container-width: 1280px;
+  --container-padding: 24px;
+
+  /* Shared section spacing */
+  --section-spacing: 80px;
+  --section-spacing-compact: 48px;
+  --section-spacing-large: 120px;
+
+  /* Common layout values */
+  --header-height: 76px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-card: 16px;
+  --radius-lg: 24px;
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgb(73 107 150 / 25%);
+}
+
+/* =====================================================
+   2. TAILWIND CSS V4 THEME MAPPING
+   Makes design tokens available to Tailwind utilities
+   ===================================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* =====================================================
+   3. DARK THEME
+   ThemeProvider can set data-theme="dark" on <html>
+   ===================================================== */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #0b0f14;
+  --foreground: #f1f5f9;
+  --surface: #111827;
+  --surface-secondary: #1e293b;
+  --muted: #94a3b8;
+  --border: #334155;
+  --accent: #8baff0;
+  --accent-foreground: #0b0f14;
+
+  --focus-ring: 0 0 0 3px rgb(139 175 240 / 30%);
+}
+
+/* =====================================================
+   4. AUTOMATIC DARK MODE FALLBACK
+   Used only when no theme has been explicitly selected
+   ===================================================== */
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    color-scheme: dark;
+
+    --background: #0b0f14;
+    --foreground: #f1f5f9;
+    --surface: #111827;
+    --surface-secondary: #1e293b;
+    --muted: #94a3b8;
+    --border: #334155;
+    --accent: #8baff0;
+    --accent-foreground: #0b0f14;
+  }
+}
+
+/* =====================================================
+   5. BOX MODEL RESET
+   Prevents unexpected width and spacing calculations
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+/* Keep Next.js root layout full width */
+body,
+body > div {
+  width: 100%;
+}
+
+/* =====================================================
+   6. RESPONSIVE MEDIA DEFAULTS
+   Avoid images and media overflowing their containers
+   ===================================================== */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+img,
+picture,
+video {
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* =====================================================
+   7. TYPOGRAPHY
+   Shared heading styles for all pages
+   ===================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+p {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* =====================================================
+   8. SHARED ELEMENT DEFAULTS
+   ===================================================== */
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+code,
+pre {
+  font-family: var(--font-code);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* =====================================================
+   9. RESPONSIVE LAYOUT TOKENS
+   Desktop: above 1024px
+   Tablet: 769px–1024px
+   Mobile: 481px–768px
+   Small mobile: up to 480px
+   ===================================================== */
+
+@media (max-width: 1024px) {
+  :root {
+    --container-width: 100%;
+    --container-padding: 24px;
+
+    --section-spacing: 64px;
+    --section-spacing-compact: 40px;
+    --section-spacing-large: 88px;
+
+    --header-height: 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 18px;
+
+    --section-spacing: 56px;
+    --section-spacing-compact: 36px;
+    --section-spacing-large: 76px;
+
+    --header-height: 68px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 16px;
+
+    --section-spacing: 44px;
+    --section-spacing-compact: 28px;
+    --section-spacing-large: 60px;
+
+    --header-height: 64px;
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --container-padding: 12px;
+
+    --section-spacing: 36px;
+    --section-spacing-compact: 24px;
+    --section-spacing-large: 48px;
+
+    --header-height: 60px;
+  }
+}
+
+/* =====================================================
+   10. ACCESSIBILITY
+   Respect reduced-motion preferences
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
