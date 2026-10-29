@@ -1,0 +1,1009 @@
+
+/* =========================================
+   UI / UX SKILLS SECTION
+   ========================================= */
+
+.ux-section {
+  --ux-accent: #7c3aed;
+  --ux-accent-secondary: #06b6d4;
+  --ux-text: var(--foreground, #111827);
+  --ux-muted: var(--muted-foreground, #64748b);
+  --ux-card: var(--card, #ffffff);
+  --ux-border: var(--border, #e5e7eb);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: clamp(42px, 6vw, 82px) 0;
+  color: var(--ux-text);
+}
+
+html[data-theme="dark"] .ux-section {
+  --ux-text: #f1f5f9;
+  --ux-muted: #a1aec0;
+  --ux-card: #111827;
+  --ux-border: rgba(148, 163, 184, 0.17);
+}
+
+.ux-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(20px, 4vw, 42px);
+  border: 1px solid var(--ux-border);
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      ellipse at 10% 0%,
+      color-mix(in srgb, var(--ux-accent) 7%, transparent),
+      transparent 45%
+    ),
+    var(--ux-card);
+}
+
+.ux-glow {
+  position: absolute;
+  z-index: -1;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.ux-glow-one {
+  top: -130px;
+  right: -70px;
+  background: var(--ux-accent);
+}
+
+.ux-glow-two {
+  top: 900px;
+  left: -170px;
+  background: var(--ux-accent-secondary);
+}
+
+/* Header */
+
+.ux-header {
+  max-width: 760px;
+  margin: 0 auto clamp(35px, 5vw, 52px);
+  text-align: center;
+}
+
+.ux-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 17px;
+  color: var(--ux-accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.ux-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ux-accent);
+  box-shadow: 0 0 12px
+    color-mix(in srgb, var(--ux-accent) 55%, transparent);
+}
+
+.ux-title {
+  margin: 0;
+  color: var(--ux-text);
+  font-size: clamp(30px, 4.5vw, 48px);
+  font-weight: 850;
+  line-height: 1.16;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.ux-title span {
+  background: linear-gradient(
+    110deg,
+    var(--ux-accent),
+    var(--ux-accent-secondary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ux-description {
+  max-width: 650px;
+  margin: 18px auto 0;
+  color: var(--ux-muted);
+  font-size: 14px;
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+.ux-header-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 23px;
+}
+
+.ux-header-tags span {
+  padding: 8px 12px;
+  border: 1px solid var(--ux-border);
+  border-radius: 999px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 5%,
+    var(--ux-card)
+  );
+  color: var(--ux-muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+/* Featured design panel */
+
+.ux-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(25px, 4vw, 48px);
+  padding: clamp(20px, 3.5vw, 35px);
+  border: 1px solid var(--ux-border);
+  border-radius: 24px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 3%,
+    var(--ux-card)
+  );
+}
+
+.ux-feature-copy {
+  min-width: 0;
+}
+
+.ux-feature-label,
+.ux-sub-eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ux-accent);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.15em;
+}
+
+.ux-feature-copy h3 {
+  margin: 0;
+  color: var(--ux-text);
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.ux-feature-copy h3 span {
+  color: var(--ux-accent);
+}
+
+.ux-feature-copy > p {
+  margin: 16px 0 0;
+  color: var(--ux-muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.ux-feature-points {
+  display: grid;
+  gap: 12px;
+  margin-top: 23px;
+}
+
+.ux-feature-points span {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--ux-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.ux-feature-points svg {
+  flex: 0 0 auto;
+  color: var(--ux-accent);
+  font-size: 16px;
+}
+
+/* Illustrative interface preview */
+
+.ux-preview {
+  position: relative;
+  min-width: 0;
+  padding: 20px 10px;
+}
+
+.ux-preview-window {
+  overflow: hidden;
+  border: 1px solid var(--ux-border);
+  border-radius: 17px;
+  background: var(--ux-card);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.09);
+}
+
+html[data-theme="dark"] .ux-preview-window {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+}
+
+.ux-window-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 43px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--ux-border);
+}
+
+.ux-window-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.ux-window-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a78bfa;
+}
+
+.ux-window-dots span:nth-child(2) {
+  background: #38bdf8;
+}
+
+.ux-window-dots span:nth-child(3) {
+  background: #34d399;
+}
+
+.ux-window-label {
+  color: var(--ux-muted);
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.ux-preview-body {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  min-height: 280px;
+}
+
+.ux-preview-sidebar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 17px;
+  padding: 17px 8px;
+  border-right: 1px solid var(--ux-border);
+}
+
+.ux-sidebar-logo {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  margin-bottom: 9px;
+  place-items: center;
+  border-radius: 9px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 12%,
+    transparent
+  );
+  color: var(--ux-accent);
+  font-size: 14px;
+}
+
+.ux-sidebar-line {
+  width: 22px;
+  height: 5px;
+  border-radius: 5px;
+  background: var(--ux-border);
+}
+
+.ux-sidebar-line.active {
+  background: var(--ux-accent);
+}
+
+.ux-sidebar-line.short {
+  width: 15px;
+}
+
+.ux-preview-content {
+  min-width: 0;
+  padding: 17px;
+}
+
+.ux-preview-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ux-preview-heading > div {
+  display: grid;
+  flex: 1;
+  gap: 7px;
+}
+
+.ux-skeleton {
+  display: block;
+  border-radius: 5px;
+  background: var(--ux-border);
+}
+
+.ux-skeleton.small {
+  width: 42%;
+  height: 5px;
+}
+
+.ux-skeleton.heading {
+  width: 72%;
+  height: 10px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 22%,
+    var(--ux-border)
+  );
+}
+
+.ux-preview-avatar {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent-secondary) 18%,
+    transparent
+  );
+  color: var(--ux-accent-secondary);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ux-preview-banner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 9px;
+  min-height: 100px;
+  padding: 14px;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--ux-accent) 12%,
+    var(--ux-border)
+  );
+  border-radius: 11px;
+  background: linear-gradient(
+    130deg,
+    color-mix(in srgb, var(--ux-accent) 12%, var(--ux-card)),
+    color-mix(in srgb, var(--ux-accent-secondary) 9%, var(--ux-card))
+  );
+}
+
+.ux-skeleton.banner-small {
+  width: 30%;
+  height: 5px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 30%,
+    var(--ux-border)
+  );
+}
+
+.ux-skeleton.banner-large {
+  width: 70%;
+  height: 10px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 25%,
+    var(--ux-border)
+  );
+}
+
+.ux-preview-button {
+  width: 47px;
+  height: 13px;
+  margin-top: 2px;
+  border-radius: 4px;
+  background: var(--ux-accent);
+}
+
+.ux-preview-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.ux-preview-card {
+  display: grid;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid var(--ux-border);
+  border-radius: 10px;
+}
+
+.ux-mini-shape {
+  display: block;
+  width: 23px;
+  height: 23px;
+  border-radius: 7px;
+}
+
+.ux-mini-shape.purple {
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 22%,
+    transparent
+  );
+}
+
+.ux-mini-shape.cyan {
+  background: color-mix(
+    in srgb,
+    var(--ux-accent-secondary) 22%,
+    transparent
+  );
+}
+
+.ux-skeleton.medium {
+  width: 75%;
+  height: 6px;
+}
+
+.ux-skeleton.tiny {
+  width: 48%;
+  height: 4px;
+}
+
+.ux-preview-chart {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--ux-border);
+  border-radius: 10px;
+}
+
+.ux-skeleton.chart-title {
+  width: 40%;
+  height: 6px;
+}
+
+.ux-chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 45px;
+  margin-top: 12px;
+}
+
+.ux-chart-bars span {
+  flex: 1;
+  min-width: 0;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(
+    180deg,
+    var(--ux-accent),
+    var(--ux-accent-secondary)
+  );
+  opacity: 0.8;
+}
+
+.ux-floating-tag {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 13px;
+  border: 1px solid var(--ux-border);
+  border-radius: 12px;
+  background: var(--ux-card);
+  color: var(--ux-text);
+  box-shadow: 0 9px 28px rgba(15, 23, 42, 0.09);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.ux-floating-tag svg {
+  color: var(--ux-accent);
+  font-size: 14px;
+}
+
+.ux-floating-top {
+  top: 3px;
+  right: 0;
+}
+
+.ux-floating-bottom {
+  bottom: 4px;
+  left: 0;
+}
+
+/* Skills heading */
+
+.ux-skills-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 48px 0 23px;
+}
+
+.ux-skills-heading h3,
+.ux-principles-heading h3 {
+  margin: 0;
+  color: var(--ux-text);
+  font-size: clamp(21px, 3vw, 28px);
+  font-weight: 850;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+
+.ux-skill-count {
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border: 1px solid var(--ux-border);
+  border-radius: 999px;
+  color: var(--ux-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+}
+
+/* Skill cards */
+
+.ux-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.ux-skill-card {
+  display: flex;
+  min-width: 0;
+  min-height: 235px;
+  flex-direction: column;
+  padding: 19px;
+  border: 1px solid var(--ux-border);
+  border-radius: 18px;
+  background: var(--ux-card);
+}
+
+.ux-skill-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 19px;
+}
+
+.ux-skill-icon {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--ux-border);
+  border-radius: 13px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 6%,
+    var(--ux-card)
+  );
+  font-size: 21px;
+}
+
+.ux-skill-number {
+  color: var(--ux-muted);
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.75;
+}
+
+.ux-skill-category {
+  margin-bottom: 6px;
+  color: var(--ux-accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.ux-skill-card h4 {
+  margin: 0 0 9px;
+  color: var(--ux-text);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.ux-skill-card > p {
+  flex: 1;
+  margin: 0;
+  color: var(--ux-muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.ux-skill-bottom {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 17px;
+  padding-top: 11px;
+  border-top: 1px solid var(--ux-border);
+  color: var(--ux-muted);
+  font-size: 10px;
+}
+
+.ux-skill-bottom > span:first-child {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--ux-accent-secondary);
+}
+
+/* Skill icon color palette */
+
+.ux-purple {
+  color: #8b5cf6;
+}
+
+.ux-orange {
+  color: #f59e0b;
+}
+
+.ux-cyan {
+  color: #06b6d4;
+}
+
+.ux-green {
+  color: #10b981;
+}
+
+.ux-blue {
+  color: #3b82f6;
+}
+
+.ux-pink {
+  color: #ec4899;
+}
+
+.ux-indigo {
+  color: #6366f1;
+}
+
+.ux-yellow {
+  color: #d97706;
+}
+
+.ux-teal {
+  color: #0d9488;
+}
+
+.ux-red {
+  color: #ef4444;
+}
+
+.ux-figma {
+  color: #f24e1e;
+}
+
+.ux-sky {
+  color: #0ea5e9;
+}
+
+/* Design principles */
+
+.ux-principles {
+  margin-top: 42px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--ux-border);
+  border-radius: 22px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 3%,
+    var(--ux-card)
+  );
+}
+
+.ux-principles-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.ux-principles-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--ux-border);
+  border-radius: 14px;
+  background: var(--ux-card);
+  color: var(--ux-accent);
+  font-size: 20px;
+}
+
+.ux-principles-heading .ux-sub-eyebrow {
+  margin-bottom: 6px;
+}
+
+.ux-principles-heading h3 {
+  font-size: clamp(18px, 2.7vw, 25px);
+}
+
+.ux-principles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.ux-principle {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--ux-border);
+  border-radius: 15px;
+  background: var(--ux-card);
+}
+
+.ux-principle-number {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--ux-accent);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.ux-principle h4 {
+  margin: 0 0 8px;
+  color: var(--ux-text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ux-principle p {
+  margin: 0;
+  color: var(--ux-muted);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+/* Footer */
+
+.ux-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 760px;
+  margin: 28px auto 0;
+  padding: 17px 20px;
+  border: 1px solid var(--ux-border);
+  border-radius: 16px;
+  background: var(--ux-card);
+}
+
+.ux-footer-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  background: color-mix(
+    in srgb,
+    var(--ux-accent) 10%,
+    transparent
+  );
+  color: var(--ux-accent);
+  font-size: 17px;
+}
+
+.ux-footer p {
+  margin: 0;
+  color: var(--ux-muted);
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.ux-footer strong {
+  color: var(--ux-text);
+  font-weight: 800;
+}
+
+/* Scroll reveal */
+
+.ux-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 550ms ease,
+    transform 550ms ease;
+}
+
+.ux-reveal.ux-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .ux-skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ux-principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ux-feature {
+    gap: 24px;
+  }
+}
+
+/* Mobile landscape / small tablet */
+
+@media (max-width: 760px) {
+  .ux-section {
+    padding: 38px 0;
+  }
+
+  .ux-shell {
+    padding: 22px 16px;
+    border-radius: 22px;
+  }
+
+  .ux-feature {
+    grid-template-columns: 1fr;
+    padding: 22px 17px;
+  }
+
+  .ux-feature-copy h3 {
+    font-size: 29px;
+  }
+
+  .ux-preview {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .ux-skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .ux-skill-card {
+    min-height: 230px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .ux-skill-icon {
+    width: 41px;
+    height: 41px;
+    font-size: 19px;
+  }
+
+  .ux-skill-card h4 {
+    font-size: 14px;
+  }
+
+  .ux-skills-heading {
+    align-items: flex-start;
+    margin-top: 35px;
+  }
+
+  .ux-principles {
+    margin-top: 30px;
+    padding: 19px 15px;
+  }
+
+  .ux-principle {
+    padding: 15px;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 420px) {
+  .ux-shell {
+    padding: 20px 13px;
+  }
+
+  .ux-title {
+    font-size: 29px;
+  }
+
+  .ux-description {
+    font-size: 13px;
+  }
+
+  .ux-header-tags {
+    gap: 7px;
+  }
+
+  .ux-header-tags span {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .ux-skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ux-skill-card {
+    min-height: auto;
+    padding: 17px;
+  }
+
+  .ux-skill-card > p {
+    font-size: 12.5px;
+  }
+
+  .ux-principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ux-principles-heading {
+    align-items: flex-start;
+  }
+
+  .ux-principles-heading h3 {
+    font-size: 19px;
+  }
+
+  .ux-preview-body {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .ux-preview-sidebar {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .ux-preview-content {
+    padding: 12px;
+  }
+
+  .ux-floating-tag {
+    padding: 9px 10px;
+    font-size: 9px;
+  }
+
+  .ux-footer {
+    align-items: flex-start;
+    padding: 15px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .ux-reveal,
+  .ux-reveal.ux-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,570 @@
+
+/* =========================================
+   TOOLS & DEVELOPMENT WORKFLOW
+   ========================================= */
+
+.ts-section {
+  --ts-accent: #6366f1;
+  --ts-accent-2: #06b6d4;
+  --ts-text: var(--foreground, #111827);
+  --ts-muted: var(--muted-foreground, #64748b);
+  --ts-card-bg: var(--card, #ffffff);
+  --ts-border: var(--border, #e5e7eb);
+
+  position: relative;
+  width: 100%;
+  padding: clamp(42px, 6vw, 82px) 0;
+  color: var(--ts-text);
+  isolation: isolate;
+}
+
+html[data-theme="dark"] .ts-section {
+  --ts-text: #f1f5f9;
+  --ts-muted: #a1aec0;
+  --ts-card-bg: #111827;
+  --ts-border: rgba(148, 163, 184, 0.16);
+}
+
+.ts-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(20px, 4vw, 42px);
+  border: 1px solid var(--ts-border);
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--ts-accent) 5%, transparent),
+      transparent 42%
+    ),
+    var(--ts-card-bg);
+}
+
+.ts-orb {
+  position: absolute;
+  z-index: -1;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.ts-orb-one {
+  top: -130px;
+  right: -60px;
+  background: var(--ts-accent);
+}
+
+.ts-orb-two {
+  bottom: 120px;
+  left: -180px;
+  background: var(--ts-accent-2);
+}
+
+/* Header */
+
+.ts-header {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto clamp(32px, 5vw, 48px);
+  text-align: center;
+}
+
+.ts-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 17px;
+  color: var(--ts-accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.ts-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--ts-accent);
+  box-shadow: 0 0 12px
+    color-mix(in srgb, var(--ts-accent) 55%, transparent);
+}
+
+.ts-title {
+  margin: 0;
+  color: var(--ts-text);
+  font-size: clamp(29px, 4.5vw, 48px);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.ts-title span {
+  color: var(--ts-accent);
+  background: linear-gradient(
+    110deg,
+    var(--ts-accent),
+    var(--ts-accent-2)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ts-description {
+  max-width: 600px;
+  margin: 17px auto 0;
+  color: var(--ts-muted);
+  font-size: 14px;
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+
+/* Tool cards */
+
+.ts-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.ts-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 225px;
+  flex-direction: column;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--ts-border);
+  border-radius: 19px;
+  background: var(--ts-card-bg);
+  animation-delay: var(--ts-delay, 0ms);
+}
+
+.ts-card::before {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  left: 18px;
+  height: 2px;
+  border-radius: 0 0 5px 5px;
+  background: linear-gradient(
+    90deg,
+    var(--ts-accent),
+    var(--ts-accent-2)
+  );
+  content: "";
+  opacity: 0.65;
+}
+
+.ts-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 21px;
+}
+
+.ts-icon-box {
+  display: grid;
+  width: 47px;
+  height: 47px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--ts-border);
+  border-radius: 14px;
+  background: color-mix(
+    in srgb,
+    var(--ts-accent) 8%,
+    var(--ts-card-bg)
+  );
+  color: var(--ts-accent);
+  font-size: 23px;
+}
+
+.ts-card-number {
+  color: var(--ts-muted);
+  font-size: 11px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+.ts-card-content {
+  flex: 1;
+}
+
+.ts-category {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ts-accent);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.ts-card-content h3 {
+  margin: 0 0 9px;
+  color: var(--ts-text);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.ts-card-content p {
+  margin: 0;
+  color: var(--ts-muted);
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+
+.ts-card-bottom {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 19px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ts-border);
+  color: var(--ts-muted);
+  font-size: 10px;
+}
+
+.ts-status-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+/* Icon colors */
+
+.ts-vscode {
+  color: #38a5f5;
+}
+
+.ts-git {
+  color: #f05b42;
+}
+
+.ts-github {
+  color: var(--ts-text);
+}
+
+.ts-branch {
+  color: #8b5cf6;
+}
+
+.ts-postman {
+  color: #ff6c37;
+}
+
+.ts-npm {
+  color: #cb3837;
+}
+
+.ts-vite {
+  color: #a78bfa;
+}
+
+.ts-terminal {
+  color: #10b981;
+}
+
+.ts-database {
+  color: #06b6d4;
+}
+
+.ts-debug {
+  color: #f59e0b;
+}
+
+.ts-figma {
+  color: #f24e1e;
+}
+
+.ts-jira {
+  color: #2684ff;
+}
+
+.ts-docker {
+  color: #2496ed;
+}
+
+.ts-workflow {
+  color: var(--ts-accent);
+}
+
+/* Workflow */
+
+.ts-workflow {
+  margin-top: 42px;
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid var(--ts-border);
+  border-radius: 22px;
+  background: color-mix(
+    in srgb,
+    var(--ts-accent) 3%,
+    var(--ts-card-bg)
+  );
+}
+
+.ts-workflow-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.ts-mini-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ts-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.ts-workflow-heading h3 {
+  margin: 0;
+  color: var(--ts-text);
+  font-size: clamp(20px, 3vw, 27px);
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+
+.ts-workflow-icon {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--ts-border);
+  border-radius: 14px;
+  background: var(--ts-card-bg);
+  color: var(--ts-accent);
+  font-size: 18px;
+}
+
+.ts-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ts-workflow-step {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--ts-border);
+  border-radius: 16px;
+  background: var(--ts-card-bg);
+}
+
+.ts-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.ts-step-number {
+  color: var(--ts-accent);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.ts-step-icon {
+  color: var(--ts-muted);
+  font-size: 19px;
+}
+
+.ts-workflow-step h4 {
+  margin: 0 0 8px;
+  color: var(--ts-text);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.ts-workflow-step p {
+  margin: 0;
+  color: var(--ts-muted);
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+/* Footer note */
+
+.ts-footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 750px;
+  margin: 28px auto 0;
+  padding: 18px 20px;
+  border: 1px solid var(--ts-border);
+  border-radius: 16px;
+  background: var(--ts-card-bg);
+}
+
+.ts-footer-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  background: color-mix(
+    in srgb,
+    var(--ts-accent) 10%,
+    transparent
+  );
+  color: var(--ts-accent);
+  font-size: 17px;
+}
+
+.ts-footer-note p {
+  margin: 0;
+  color: var(--ts-muted);
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.ts-footer-note strong {
+  color: var(--ts-text);
+  font-weight: 750;
+}
+
+/* Reveal animation */
+
+.ts-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 550ms ease,
+    transform 550ms ease;
+}
+
+.ts-reveal.ts-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .ts-tools-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ts-workflow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .ts-section {
+    padding: 38px 0;
+  }
+
+  .ts-shell {
+    padding: 22px 16px;
+    border-radius: 22px;
+  }
+
+  .ts-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .ts-card {
+    min-height: 220px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .ts-card-top {
+    margin-bottom: 16px;
+  }
+
+  .ts-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 21px;
+  }
+
+  .ts-card-content h3 {
+    font-size: 14px;
+  }
+
+  .ts-card-content p {
+    font-size: 12px;
+  }
+
+  .ts-workflow {
+    margin-top: 28px;
+    padding: 18px 14px;
+  }
+
+  .ts-workflow-step {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ts-tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-card {
+    min-height: auto;
+  }
+
+  .ts-card-content p {
+    font-size: 12.5px;
+  }
+
+  .ts-workflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ts-workflow-step {
+    padding: 17px;
+  }
+
+  .ts-footer-note {
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .ts-title {
+    font-size: 29px;
+  }
+
+  .ts-description {
+    font-size: 13px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-reveal,
+  .ts-reveal.ts-visible {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}
